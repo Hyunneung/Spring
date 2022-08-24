@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+					    http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mbi" class="org.zerock.controller.example6.MessageBeanImpl">
+		<constructor-arg>
+			<value>Spring</value>
+		</constructor-arg>
+		<property name="greeting">
+			<value>안녕하세요!</value>
+		</property>
+		<property name="outputter">
+			<ref bean="fo"/>
+		</property>
+	</bean>
+	
+	<bean id="fo" class="org.zerock.controller.example6.FileOutputter">
+		<property name="filePath">
+			<value>out2.txt</value>
+		</property>
+	</bean>
+</beans>
