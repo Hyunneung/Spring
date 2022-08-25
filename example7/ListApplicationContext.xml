@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="listBean" class="org.zerock.controller.example7.ListBean">
+		<property name="addressList">
+			<list>
+				<value>서울시 종로구 다동</value>
+				<value>서울시 종로구 인사동</value>
+				<value>서울시 종로구 익선동</value>
+			</list>
+		</property>
+	</bean>
+</beans>
