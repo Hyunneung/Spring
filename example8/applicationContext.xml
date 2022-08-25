@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mm" class="org.zerock.controller.example8.MessageMultiple">
+		<property name="messagebean">
+			<ref bean="mb"/>
+		</property>
+	</bean>
+	
+	<bean id="mb" class="org.zerock.controller.example8.MessageBeanKo"/>
+
+</beans>
