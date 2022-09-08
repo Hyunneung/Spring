@@ -8,6 +8,6 @@
 			<ref bean="mb"/>
 		</property>
 	</bean>
-	
+	 
 	<bean id="mb" class="org.zerock.controller.example18.MessageBeanEn" destroy-method="destroyMethod"/>
 </beans>
