@@ -7,10 +7,11 @@ public class MessageBeanEn implements MessageBean {
 	}
 	
 	public MessageBeanEn() {
-		System.out.println("MessageBeanEn »ı¼ºÀÚ");
+		System.out.println("MessageBeanEn Â»Ã½Â¼ÂºÃ€Ãš");
 	}
 	
 	public void destroyMethod() {
-		System.out.println("MessageBeanEnÀÇ destroyMethod() ¸Ş¼Òµå");
+		System.out.println("MessageBeanEnÃ€Ã‡ destroyMethod() Â¸ÃÂ¼Ã’ÂµÃ¥");
 	}
 }
+ 
