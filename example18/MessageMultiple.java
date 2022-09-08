@@ -7,9 +7,9 @@ public class MessageMultiple {
 		this.messagebean = messagebean;
 	}
 
-	// »ı¼ºÀÚ
+	// Â»Ã½Â¼ÂºÃ€Ãš
 	public MessageMultiple() {
-		System.out.println("MessageMultiple »ı¼ºÀÚ");
+		System.out.println("MessageMultiple Â»Ã½Â¼ÂºÃ€Ãš");
 	}
 	
 	public void print() {
@@ -18,6 +18,7 @@ public class MessageMultiple {
 	
 	
 	public void initMethod() {
-		System.out.println("MessageMultipleÀÇ initMethod() ¸Ş¼Òµå");
+		System.out.println("MessageMultipleÃ€Ã‡ initMethod() Â¸ÃÂ¼Ã’ÂµÃ¥");
 	}
 }
+ 
