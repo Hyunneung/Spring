@@ -11,9 +11,9 @@ public class MessageMultiple {
 	@Resource(name="mbe")
 	private MessageBean messagebean;
 
-	// »ı¼ºÀÚ
+	// 
 	public MessageMultiple() {
-		System.out.println("MessageMultiple »ı¼ºÀÚ");
+		System.out.println("MessageMultiple ìƒì„±ì");
 	}
 	
 	public void print() {
@@ -22,6 +22,7 @@ public class MessageMultiple {
 	
 	@PostConstruct
 	public void initMethod() {
-		System.out.println("MessageMultipleÀÇ initMethod() ¸Ş¼Òµå");
+		System.out.println("MessageMultipleÃ€Ã‡ initMethod() ë©”ì†Œë“œ");
 	}
 }
+ 
