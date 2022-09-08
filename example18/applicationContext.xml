@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mm" class="org.zerock.controller.example18.MessageMultiple" init-method="initMethod">
+		<property name="bean">
+			<ref bean="mb"/>
+		</property>
+	</bean>
+	
+	<bean id="mb" class="org.zerock.controller.example18.MessageBeanEn" destroy-method="destroyMethod"/>
+</beans>
