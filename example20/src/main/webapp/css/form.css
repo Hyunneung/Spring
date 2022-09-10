@@ -1,0 +1,5 @@
+@charset "UTF-8";
+  table{margin:0 auto;width:300px}
+  .last{background:lightgreen}
+  td:nth-child(2n+1){background:yellow}
+  td{text-align:center;height:30px}
