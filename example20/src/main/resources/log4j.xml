@@ -11,8 +11,21 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.zerock.controller1">
+	<logger name="org.zerock">
 		<level value="info" />
+	</logger>
+	
+	<!-- Application Loggers -->
+	<logger name="Member"> <!-- myBatis의 namespace에 해당하는 값을 name에 넣어주면 콘솔창에 로그가 찍힌다 -->
+		<level value="trace" />
+	</logger>
+	
+	<logger name="Board">
+		<level value="trace" />
+	</logger>
+	
+	<logger name="Comment">
+		<level value="trace" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -31,7 +44,8 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
+	
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
