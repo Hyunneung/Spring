@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!--  SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+
+<!-- 태그 규칙을 정의 한 DTD 선언이 옵니다. -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- mybatis 설정 파일의 루트 엘리먼트입니다. -->
+<configuration>
+	<typeAliases>
+		<typeAlias alias="member"  type="org.zerock.controller3.domain.Member" /> 
+		<typeAlias alias="board"   type="org.zerock.controller3.domain.Board" /> 
+		<typeAlias alias="comment" type="org.zerock.controller3.domain.Comment" /> 
+	</typeAliases>
+	
+	
+	<!-- 
+		<mappers> 엘리먼트 : SQL 맵퍼 파일들의 정보를 설정할 때 사용합니다.
+		 				  각각의 SQL 맵퍼 파일의 정보는 <mapper>태그로 정의합니다.
+		 				  
+		SQL 맵퍼 파일의 경로를 설정할 때 2가지 방법이 있습니다. 				  
+		1. 자바의 클래스 경로를 사용하는 방법 : resource 속성을 사용합니다.
+		2. 파일 시스템 경로를 사용하는 방법 : url 속성을 사용합니다.
+		   예) c:/model 폴더에 Member.xml에 있는 경우
+		      <mapper url="file:///c:/model/Member.xml" />
+	 -->
+	<mappers>
+    	<mapper resource="sqlmapper/member.xml"/>
+    	<mapper resource="sqlmapper/board.xml"/>
+    	<mapper resource="sqlmapper/comment.xml"/>
+  	</mappers>
+</configuration>

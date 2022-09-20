@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security 
+	http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd">
+
+	
+	<!--
+		1. <security:http> : 로그인을 위한 폼 설정, 특정 주소에 대한 권한 설정, 로그인 유지, 로그아웃에 대한 설정
+		   (1) <security:form-login> : 로그인 폼에 대한 설정 태그
+		2. <security:authentication-manager> : 인증 담당    
+	-->
+	<security:http>
+		<security:intercept-url pattern="/resources/**" 	  access="permitAll" />
+		<security:intercept-url pattern="/member/login" 	  access="permitAll" />
+		<security:intercept-url pattern="/member/join" 	 	  access="permitAll" />
+		<security:intercept-url pattern="/member/idcheck" 	  access="permitAll" />
+		<security:intercept-url pattern="/member/joinProcess" access="permitAll" />
+		<security:intercept-url pattern="/member/list" 		  access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/**" 		  access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')" />
+
+	
+		<!-- 시큐리티 페이지를 내가 만든 걸로 설정  -->
+		<security:form-login login-page="/member/login" 
+							 login-processing-url="/member/loginProcess"				 
+							 username-parameter="id"
+							 password-parameter="password"
+							 authentication-failure-handler-ref="loginFailHandler"
+							 authentication-success-handler-ref="loginSuccessHandler" />
+							 
+		<!-- 접근 금지에 대한 오류(403 오류) 처리는 내가 직접 합니다. -->
+		<security:access-denied-handler ref="customAccessDeniedHandler" />
+		
+		<!-- 로그인 유지하기 -->
+		<security:remember-me data-source-ref="dataSource"
+							  remember-me-parameter="remember-me" 
+							  remember-me-cookie="remember-me"
+							  token-validity-seconds="2419200" /> <!-- 4주 -->
+							  
+		<!-- 로그아웃 -->					  
+		<security:logout logout-success-url="/member/login"
+						 logout-url="/member/logout"
+						 invalidate-session="true"
+						 delete-cookies="true" />					 
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<!-- org.zerock.security.CustomUserDetailsService.java의 @Service를 인식하기 위해 사용합니다. -->
+	<context:component-scan base-package="org.zerock.security" />
+	
+		  
+</beans>

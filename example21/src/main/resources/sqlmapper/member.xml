@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+	<select id="isId" resultType="member" parameterType="String">
+		select * from member
+		where id = #{id}
+	</select>
+	
+	
+	<insert id="join" parameterType="member">
+		insert into member
+		values ( #{id}, #{password}, #{name}, #{age},  #{gender}, #{email}, #{auth})
+	</insert>
+	
+	<!-- 정보수정 -->
+	<update id="updateProcess" parameterType="member">
+		update member
+		set name = #{name},
+		    age = #{age},	
+		    gender = #{gender},	
+		    email = #{email}
+		where id = #{id}
+	</update>
+	
+	<!-- 회원정보 리스트 -->
+	<select id="list" resultType="member" parameterType="map">
+		select * 
+	  	from ( select rownum rnum, b.*
+	           from  (select * 
+	                 from member  
+	                 where id != 'admin'
+	                 	<include refid="search"/>
+	                  order by id )b 
+	            where rownum &lt;=  #{endrow}    
+	         ) 
+		where rnum &gt;= #{startrow} and rnum  &lt;=  #{endrow} 
+	</select>
+	<!-- 회원수 -->
+	<select id="listCount" resultType="int" parameterType="map">
+		select count(*) from member
+		where id != 'admin'
+		<include refid="search"/>
+	</select>
+	
+	<!-- 회원정보 리스트, 회원수 쿼리에 필요한 공통 부분 -->
+	<sql id="search">
+		<if test="search_field != null">
+        	and	           
+            <choose>
+            	<when test="search_field == 'id'">id</when>
+               	<when test="search_field == 'name'">name</when>
+               	<when test="search_field == 'age'">age</when>
+               	<when test="search_field == 'gender'">gender</when>
+            </choose>	  
+          like #{search_word}	     
+        </if>
+	</sql>
+	
+	
+	<!-- 회원 삭제 -->
+	<delete id="delete" parameterType="String">
+		delete from member
+		where id = #{id}
+	</delete>
+</mapper>
